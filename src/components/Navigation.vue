@@ -69,7 +69,7 @@ nav .logo {
 	height: 100%;
 	display: flex;
 	align-items: center;
-	font-size: 24px;
+	font-size: 36px;
     font-weight:bolder;
 	/* color: var(--logo-color); */
 }
@@ -93,7 +93,7 @@ nav .links li {
 nav .links a {
 	display: block;
 	padding: 1em;
-	font-size: 16px;
+	font-size: 24px;
 	font-weight: bold;
 	color: var(--nav-link-color);
 	text-decoration: none;
