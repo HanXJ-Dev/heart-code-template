@@ -3,11 +3,9 @@
         <input id="nav-toggle" type="checkbox">
         <div class="logo"><router-link to="/">Site name</router-link></div>
         <ul class="links">
-            <li :class ="navigation['about']?'active': ''"><router-link to ="/">About me</router-link></li>
-            <li :class ="navigation['goals']?'active': ''"><router-link to ="/goals">Goals</router-link></li>
-            <li :class ="navigation['food']?'active': ''"><router-link to ="/food">Food</router-link></li>
-            
-
+            <li :class ="navigation.about?'active': ''"><router-link to ="/">About me</router-link></li>
+            <li :class ="navigation.goals?'active': ''"><router-link to ="/goals">Goals</router-link></li>
+            <li :class ="navigation.food?'active': ''"><router-link to ="/food">Food</router-link></li>
         </ul>
         <label for="nav-toggle" class="icon-burger">
             <div class="line"></div>
@@ -30,24 +28,10 @@ import M from 'minimatch'
             }
         },
         watch:{
-            '$route'(to, from){
-                console.log(to)
-                var to = to.path
-                
-                for(var item in this.navigation){
-                    if (to ==="/"){
-                        for(var item in this.navigation){
-                            this.navigation[item] = false
-                        }
-                        this.navigation['about'] = true
-                        break
-                    }
-                    else if (to === "/"+item){
-                        this.navigation[item] = true
-                    }else{
-                        this.navigation[item] = false
-                    }
-                }
+            $route(to, from){
+				for (const property in this.navigation){
+					property == to.name.toLowerCase() ? (this.navigation[property] = true) : (this.navigation[property] = false);
+				}
             }
         }
     }
